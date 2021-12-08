@@ -5,6 +5,7 @@ import UrlList from './UrlList';
 
 function LabelPreview({ type, urls }) {
   const dispatch = useDispatch();
+
   const handleRemoveUrl = url => {
     dispatch(remove({ url, type: type.value }));
   };
