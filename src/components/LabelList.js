@@ -16,10 +16,7 @@ function LabelList({ currentType }) {
         />
       ))}
       {!Object.keys(data)?.find(type => type === currentType.value) && (
-        <LabelPreview
-          type={currentType} // find the text definition for type
-          urls={data[currentType]}
-        />
+        <LabelPreview type={currentType} urls={data[currentType]} />
       )}
     </StyledLabelList>
   );
