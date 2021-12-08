@@ -1,10 +1,16 @@
 import styled from 'styled-components';
+import breakpoints from './general/breakpoints';
 import Button from './shared/Button.styled';
 
 const StyledUrlAdd = styled.form`
   display: flex;
   align-items: stretch;
   gap: 20px;
+  flex-direction: column;
+
+  @media (min-width: ${breakpoints.mobile}) {
+    flex-direction: row;
+  }
 
   label {
     font-weight: 500;
@@ -15,11 +21,15 @@ const StyledUrlAdd = styled.form`
 `;
 
 export const SelectWrapper = styled.div`
-  flex-basis: 250px;
+  @media (min-width: ${breakpoints.mobile}) {
+    flex-basis: 250px;
+  }
 `;
 
 export const InputWrapper = styled.div`
-  flex-basis: 450px;
+  @media (min-width: ${breakpoints.mobile}) {
+    flex-basis: 450px;
+  }
   position: relative;
 `;
 
