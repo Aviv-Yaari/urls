@@ -20,6 +20,9 @@ const StyledMainContent = styled.main`
     flex-direction: column;
     flex-basis: 820px;
     gap: 30px;
+    button {
+      margin-left: auto;
+    }
   }
 `;
 

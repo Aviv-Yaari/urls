@@ -5,7 +5,7 @@ const StyledLabelPreview = styled.section`
   align-items: center;
   gap: 10px;
   > :first-child {
-    width: 100px;
+    width: 150px;
     word-break: break-all;
   }
 `;

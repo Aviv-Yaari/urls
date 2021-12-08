@@ -1,46 +1,39 @@
-import StyledUrlAdd, { InputError, InputWrapper, SelectWrapper } from '../assets/styles/UrlAdd.styled';
+import StyledUrlAdd, { InputError, InputWrapper, SelectWrapper, StyledButton } from '../assets/styles/UrlAdd.styled';
 import Select from 'react-select';
-import Button from '../assets/styles/shared/Button.styled';
 import Input from '../assets/styles/shared/Input.styled';
-import { useDispatch, useSelector } from 'react-redux';
+import { useDispatch } from 'react-redux';
 import { add } from '../store/urlSlice';
 import { useState } from 'react';
 
-function UrlAdd() {
-  const options = useSelector(state => state.url.options);
-  const [fields, setFields] = useState({ url: '', type: options[0] });
+function UrlAdd({ type, options, onSelectChange }) {
+  const [url, setUrl] = useState('');
   const [error, setError] = useState(null);
   const dispatch = useDispatch();
 
   const handleChange = ev => {
-    const { name, value } = ev.target;
-    setFields(fields => ({ ...fields, [name]: value }));
-  };
-
-  const handleSelectChange = type => {
-    setFields(fields => ({ ...fields, type }));
+    setUrl(ev.target.value);
   };
 
   const handleSubmit = ev => {
     ev.preventDefault();
-    const { url, type } = fields;
-    if (fields.url.charAt(0) !== '/') {
+    if (url.charAt(0) !== '/') {
       return setError("URLs must start with '/'");
     }
     setError(null);
+    setUrl('');
     dispatch(add({ url, type: type.value }));
   };
 
   return (
     <StyledUrlAdd onSubmit={handleSubmit}>
       <SelectWrapper>
-        <Select name="type" options={options} onChange={handleSelectChange} value={fields.type} />
+        <Select name="type" options={options} onChange={onSelectChange} value={type} />
       </SelectWrapper>
       <InputWrapper>
-        <Input isError={!!error} name="url" placeholder="e.g. /index.php" onChange={handleChange} value={fields.url} />
+        <Input isError={!!error} name="url" placeholder="e.g. /index.php" onChange={handleChange} value={url} />
         {error && <InputError>{error}</InputError>}
       </InputWrapper>
-      <Button>Add</Button>
+      <StyledButton>Add</StyledButton>
     </StyledUrlAdd>
   );
 }

@@ -2,7 +2,7 @@ import styled from 'styled-components';
 
 const Button = styled.button`
   background: ${props => props.theme.colors.primary2};
-  padding: 5px 25px;
+  padding: 10px 25px;
   border: none;
   color: #fff;
   font-family: inherit;

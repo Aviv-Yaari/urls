@@ -1,4 +1,5 @@
 import styled from 'styled-components';
+import Button from './shared/Button.styled';
 
 const StyledUrlAdd = styled.form`
   display: flex;
@@ -28,6 +29,10 @@ export const InputError = styled.span`
   bottom: -20px;
   font-size: 0.9em;
   color: #e70000;
+`;
+
+export const StyledButton = styled(Button)`
+  margin-left: auto;
 `;
 
 export default StyledUrlAdd;

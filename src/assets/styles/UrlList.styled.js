@@ -6,6 +6,8 @@ const StyledUrlList = styled.ul`
   border: 1px solid ${props => props.theme.colors.borderHover};
   display: flex;
   align-items: flex-start;
+  flex-wrap: wrap;
+  align-content: flex-start;
   flex-grow: 1;
   gap: 10px;
 `;
