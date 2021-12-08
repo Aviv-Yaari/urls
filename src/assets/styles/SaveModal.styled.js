@@ -2,7 +2,7 @@ import styled from 'styled-components';
 import { ModalContent } from './shared/Modal.styled';
 
 const StyledSaveModal = styled(ModalContent)`
-  min-width: 300px;
+  min-width: 280px;
   max-width: 450px;
   min-height: 300px;
   border-radius: 10px;
