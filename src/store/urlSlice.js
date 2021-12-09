@@ -10,6 +10,7 @@ const initialState = {
     { value: 'SUFFIX', label: 'URL ends with' },
   ],
   data: {},
+  currentOption: { value: 'EQUALS', label: 'URL is' },
 };
 
 export const urlSlice = createSlice({
@@ -17,10 +18,11 @@ export const urlSlice = createSlice({
   initialState,
   reducers: {
     add: (state, action) => {
-      const { url, type } = action.payload;
-      if (!state.data[type]) state.data[type] = [];
-      if (state.data[type].includes(url)) return;
-      state.data[type].push(url);
+      const { url } = action.payload;
+      const { value } = state.currentOption;
+      if (!state.data[value]) state.data[value] = [];
+      if (state.data[value].includes(url)) return;
+      state.data[value].push(url);
     },
     remove: (state, action) => {
       const { idx, type } = action.payload;
@@ -29,9 +31,13 @@ export const urlSlice = createSlice({
       state.data[type].splice(idx, 1);
       if (!state.data[type].length) delete state.data[type];
     },
+    selectOption: (state, action) => {
+      const { option } = action.payload;
+      state.currentOption = option;
+    },
   },
 });
 
-export const { add, remove } = urlSlice.actions;
+export const { add, remove, selectOption } = urlSlice.actions;
 
 export default urlSlice.reducer;

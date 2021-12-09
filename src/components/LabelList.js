@@ -2,9 +2,10 @@ import { useSelector } from 'react-redux';
 import StyledLabelList from '../assets/styles/LabelList.styled';
 import LabelPreview from './LabelPreview';
 
-function LabelList({ currentType }) {
+function LabelList() {
   const data = useSelector(state => state.url.data);
   const options = useSelector(state => state.url.options);
+  const currentOption = useSelector(state => state.url.currentOption);
 
   return (
     <StyledLabelList>
@@ -15,8 +16,8 @@ function LabelList({ currentType }) {
           urls={data[type]}
         />
       ))}
-      {!Object.keys(data)?.find(type => type === currentType.value) && (
-        <LabelPreview type={currentType} urls={data[currentType]} />
+      {!Object.keys(data)?.find(type => type === currentOption.value) && (
+        <LabelPreview type={currentOption} urls={data[currentOption]} />
       )}
     </StyledLabelList>
   );
