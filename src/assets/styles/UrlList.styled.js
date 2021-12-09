@@ -10,5 +10,6 @@ const StyledUrlList = styled.ul`
   align-content: flex-start;
   flex-grow: 1;
   gap: 10px;
+  max-width: 600px;
 `;
 export default StyledUrlList;

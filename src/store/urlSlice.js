@@ -23,9 +23,10 @@ export const urlSlice = createSlice({
       state.data[type].push(url);
     },
     remove: (state, action) => {
-      const { url, type } = action.payload;
+      const { idx, type } = action.payload;
       if (!state.data[type] || !Array.isArray(state.data[type])) return;
-      state.data[type] = state.data[type].filter(currUrl => currUrl !== url);
+      if (idx < 0 || idx > state.data[type]) return;
+      state.data[type].splice(idx, 1);
       if (!state.data[type].length) delete state.data[type];
     },
   },

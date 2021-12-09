@@ -4,8 +4,8 @@ import UrlPreview from './UrlPreview.js';
 function UrlList({ urls, onRemove }) {
   return (
     <StyledUrlList>
-      {urls?.map(url => (
-        <UrlPreview key={url} url={url} onRemove={onRemove} />
+      {urls?.map((url, idx) => (
+        <UrlPreview key={url} url={url} idx={idx} onRemove={onRemove} />
       ))}
     </StyledUrlList>
   );
