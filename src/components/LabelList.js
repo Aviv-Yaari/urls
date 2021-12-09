@@ -17,9 +17,7 @@ function LabelList() {
           urls={data[type]}
         />
       ))}
-      {!types.find(type => type === currentOption.value) && (
-        <LabelPreview type={currentOption} urls={data[currentOption]} />
-      )}
+      {!types.find(type => type === currentOption.value) && <LabelPreview type={currentOption} urls={[]} />}
     </StyledLabelList>
   );
 }
