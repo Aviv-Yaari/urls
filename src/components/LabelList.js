@@ -6,17 +6,18 @@ function LabelList() {
   const data = useSelector(state => state.url.data);
   const options = useSelector(state => state.url.options);
   const currentOption = useSelector(state => state.url.currentOption);
+  const types = Object.keys(data);
 
   return (
     <StyledLabelList>
-      {Object.keys(data)?.map(type => (
+      {types.map(type => (
         <LabelPreview
           key={type}
           type={options.find(option => option.value === type)} // find the text definition for type
           urls={data[type]}
         />
       ))}
-      {!Object.keys(data)?.find(type => type === currentOption.value) && (
+      {!types.find(type => type === currentOption.value) && (
         <LabelPreview type={currentOption} urls={data[currentOption]} />
       )}
     </StyledLabelList>
